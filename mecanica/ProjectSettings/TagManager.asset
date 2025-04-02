@@ -7,6 +7,9 @@ TagManager:
   - Ball
   - Barrier2D
   - Bomb
+  - Player1
+  - Player2
+  - Meta
   layers:
   - Default
   - TransparentFX

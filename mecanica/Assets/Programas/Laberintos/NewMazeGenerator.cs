@@ -22,7 +22,7 @@ public class NewMazeGenerator : MonoBehaviour
         CreateMST();
         CreateMazeWalls();
         CreateMazeBorders();
-        //transform.Find("Maze").rotation = Quaternion.Euler(90, 0, 0);
+        transform.Find("Maze").rotation = Quaternion.Euler(90, 0, 0);
     }
 
     void CreateGraph()
