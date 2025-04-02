@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Ball
   - Barrier2D
+  - Bomb
   layers:
   - Default
   - TransparentFX
