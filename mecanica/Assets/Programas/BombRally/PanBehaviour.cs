@@ -2,6 +2,9 @@ using UnityEngine;
 
 public class PanBehaviour : MonoBehaviour
 {
+    // Aqui controlamos el movimiento de golpeo de los jugadores, se utiliza el mismo codigo para los 3 players ya que utilizamos variables de "KeyCode" para poder asignar
+    // las teclas desde el inspector.
+
     public Transform Target1, Target2;
     public KeyCode SendLeft, SendRight;
     public float flyingTime;

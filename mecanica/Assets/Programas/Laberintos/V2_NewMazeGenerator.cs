@@ -8,13 +8,13 @@ public class V2_NewMazeGenerator : MonoBehaviour
     public Vector2Int mazeSize;
     public int maxCost;
     public GameObject wallPrefab;
-    public GameObject player1Prefab;  // Prefab para el jugador 1
-    public GameObject player2Prefab;  // Prefab para el jugador 2
-    public GameObject finishPrefab;  // Prefab para el final
+    public GameObject player1Prefab;
+    public GameObject player2Prefab;
+    public GameObject finishPrefab;
     private RandomCostGraph graph;
 
     [System.NonSerialized] public MST mst;
-    private GameObject player1, player2;  // Jugadores
+    private GameObject player1, player2;
 
     private void Start()
     {
@@ -46,7 +46,6 @@ public class V2_NewMazeGenerator : MonoBehaviour
 
     void CreateMazeBorders()
     {
-        // Borde superior e inferior
         for (int i = 0; i < mazeSize.x; i++)
         {
             Vector2 posBottom = new Vector2(i, -0.5f);
@@ -57,7 +56,6 @@ public class V2_NewMazeGenerator : MonoBehaviour
             top.transform.localScale = new Vector3(1, 0.1f, 1);
         }
 
-        // Borde izquierdo y derecho
         for (int j = 0; j < mazeSize.y; j++)
         {
             Vector2 posLeft = new Vector2(-0.5f, j);
@@ -102,15 +100,11 @@ public class V2_NewMazeGenerator : MonoBehaviour
 
     void CreatePlayers()
     {
-        // Asigna el inicio y final
-        Vector2 start = graph.nodeList[0]; // Empezar en una posición arbitraria
-        Vector2 end = graph.nodeList[graph.nodeList.Count - 1]; // Final en otra posición arbitraria
-
-        // Instancia los jugadores con sus respectivos prefabs
+        Vector2 start = graph.nodeList[0];
+        Vector2 end = graph.nodeList[graph.nodeList.Count - 1];
         player1 = Instantiate(player1Prefab, new Vector3(start.x, 1, start.y), Quaternion.identity);
-        player2 = Instantiate(player2Prefab, new Vector3(start.x + 2, 1, start.y), Quaternion.identity); // Segundo jugador cerca del primero
-
-        Instantiate(finishPrefab, new Vector3(end.x, 1, end.y), Quaternion.identity); // Instancia del final en la posición calculada
+        player2 = Instantiate(player2Prefab, new Vector3(start.x + 2, 1, start.y), Quaternion.identity);
+        Instantiate(finishPrefab, new Vector3(end.x, 1, end.y), Quaternion.identity);
     }
 
     void ClearMaze()

@@ -7,13 +7,13 @@ public class V3_NewMazeGenerator : MonoBehaviour
     public Vector2Int mazeSize;
     public int maxCost;
     public GameObject wallPrefab;
-    public GameObject player1Prefab;  // Prefab para el jugador
-    public GameObject finishPrefab;  // Prefab para el final
+    public GameObject player1Prefab;
+    public GameObject finishPrefab;
     private RandomCostGraph graph;
 
     [System.NonSerialized] public MST mst;
-    private GameObject player1;  // Jugador
-    private GameObject mazeContainer;  // Contenedor del laberinto (Maze)
+    private GameObject player1;
+    private GameObject mazeContainer;
 
     public GameObject Techo;
 
@@ -23,19 +23,19 @@ public class V3_NewMazeGenerator : MonoBehaviour
         StartCoroutine(TimepoTecho());
 
         CreateMaze();
-        CreatePlayer();  // Ahora solo creamos un jugador
+        CreatePlayer();
     }
 
     private void CreateMaze()
     {
-        mazeContainer = transform.Find("Maze").gameObject;  // Obtener el objeto Maze donde se generará el laberinto
+        mazeContainer = transform.Find("Maze").gameObject;
 
         CreateGraph();
         CreateMST();
         CreateMazeWalls();
         CreateMazeBorders();
         transform.Find("Maze").rotation = Quaternion.Euler(90, 0, 0);
-        CenterPivotAfterCreation();  // Mover el pivote del laberinto al centro después de generarlo
+        CenterPivotAfterCreation();
     }
 
     void CreateGraph()
@@ -53,7 +53,6 @@ public class V3_NewMazeGenerator : MonoBehaviour
 
     void CreateMazeBorders()
     {
-        // Borde superior e inferior
         for (int i = 0; i < mazeSize.x; i++)
         {
             Vector2 posBottom = new Vector2(i, -0.5f);
@@ -64,7 +63,6 @@ public class V3_NewMazeGenerator : MonoBehaviour
             top.transform.localScale = new Vector3(1, 0.1f, 1);
         }
 
-        // Borde izquierdo y derecho
         for (int j = 0; j < mazeSize.y; j++)
         {
             Vector2 posLeft = new Vector2(-0.5f, j);
@@ -109,35 +107,12 @@ public class V3_NewMazeGenerator : MonoBehaviour
 
     void CreatePlayer()
     {
-        // El jugador debe comenzar en la esquina inferior izquierda del laberinto
-        // Ya que el pivote del laberinto ahora está en el centro, debemos ajustar la posición.
-        Vector2 start = new Vector2(-mazeSize.x / 2f, -mazeSize.y / 2f);  // Esquina inferior izquierda
-
-        // El final debe estar en la esquina superior derecha del laberinto
-        Vector2 end = new Vector2(mazeSize.x / 2f - 1, mazeSize.y / 2f - 1);  // Esquina superior derecha
-
-        // Instancia el jugador en la posición calculada, ajustando la altura (en el eje Y)
+        Vector2 start = new Vector2(-mazeSize.x / 2f, -mazeSize.y / 2f);
+        Vector2 end = new Vector2(mazeSize.x / 2f - 1, mazeSize.y / 2f - 1);
         player1 = Instantiate(player1Prefab, new Vector3(start.x, 1, start.y), Quaternion.identity);
-        player1.transform.SetParent(transform);  // Asignamos MazeGenerator como el padre
-
-        // Instancia el final en la posición calculada
+        player1.transform.SetParent(transform);
         GameObject finish = Instantiate(finishPrefab, new Vector3(end.x, 1, end.y), Quaternion.identity);
-        finish.transform.SetParent(transform);  // Asignamos MazeGenerator como el padre
-
-        /*
-        // El jugador debe comenzar en la esquina inferior izquierda del laberinto
-        // Ya que el pivote del laberinto ahora está en el centro, debemos ajustar la posición.
-        Vector2 start = new Vector2(-mazeSize.x / 2f, -mazeSize.y / 2f);  // Esquina inferior izquierda
-
-        // El final debe estar en la esquina superior derecha del laberinto
-        Vector2 end = new Vector2(mazeSize.x / 2f - 1, mazeSize.y / 2f - 1);  // Esquina superior derecha
-
-        // Instancia el jugador en la posición calculada, ajustando la altura (en el eje Y)
-        player1 = Instantiate(player1Prefab, new Vector3(start.x, 1, start.y), Quaternion.identity);
-
-        // Instancia el final en la posición calculada
-        Instantiate(finishPrefab, new Vector3(end.x, 1, end.y), Quaternion.identity);
-        */
+        finish.transform.SetParent(transform);
     }
 
     void ClearMaze()
@@ -150,11 +125,8 @@ public class V3_NewMazeGenerator : MonoBehaviour
 
     void CenterPivotAfterCreation()
     {
-        // Calcular el centro del laberinto
         Vector3 center = new Vector3(mazeSize.x / 2f, 0, mazeSize.y / 2f);
-
-        // Mover solo el objeto "Maze" al centro (no afecta el contenido)
-        mazeContainer.transform.position = -center;  // Moverlo en sentido opuesto al centro
+        mazeContainer.transform.position = -center;
     }
 
     IEnumerator TimepoTecho()

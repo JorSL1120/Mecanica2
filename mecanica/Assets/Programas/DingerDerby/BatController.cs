@@ -4,6 +4,8 @@ using UnityEngine.InputSystem;
 
 public class BatController : MonoBehaviour
 {
+    // Aqui controlamos el bateo de ambos jugadores, gracias a la variable "Key" podemos asignar la tecla que presiona desde el inspector.
+
     public Key swingKey;
 
     public TextMeshProUGUI TextoScore;

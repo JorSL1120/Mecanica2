@@ -2,6 +2,9 @@ using UnityEngine;
 
 public class PanelControllers : MonoBehaviour
 {
+
+    // En este codigo controlamos el panel del jugador que perdio
+
     public GameObject Panel;
 
     private void Start()

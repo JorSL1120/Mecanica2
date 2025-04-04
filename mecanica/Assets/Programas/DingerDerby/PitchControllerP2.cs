@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class PitchControllerP2 : MonoBehaviour
 {
+    // En este codigo se controla el lanzamiento de las bolas, lo que hace que las bolas siempre sean diferentes entre cada tiro es el random que altera el tiempo de vuelo de las bolas.
+
     private float flyingtime;
     public Transform shootPoint, target;
     public GameObject ballPrefab;

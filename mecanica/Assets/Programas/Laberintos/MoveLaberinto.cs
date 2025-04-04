@@ -20,11 +20,11 @@ public class MoveLaberinto : MonoBehaviour
 
         if (rb == null)
         {
-            rb = gameObject.AddComponent<Rigidbody>();  // Agrega Rigidbody si no existe
+            rb = gameObject.AddComponent<Rigidbody>();
         }
 
-        rb.useGravity = false; // Desactiva la gravedad
-        rb.isKinematic = false; // Asegura que el objeto sea afectado por la f�sica
+        rb.useGravity = false;
+        rb.isKinematic = false;
 
         rb.linearDamping = drag;
         rb.angularDamping = angularDrag;
