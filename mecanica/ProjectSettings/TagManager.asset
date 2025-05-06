@@ -11,6 +11,8 @@ TagManager:
   - Player2
   - Meta
   - Barrier
+  - Bala2
+  - Bala1
   layers:
   - Default
   - TransparentFX
