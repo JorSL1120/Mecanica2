@@ -35,12 +35,12 @@ public class Botones : MonoBehaviour
 
     public void BotTanques()
     {
-        SceneManager.LoadScene("Colision");
+        SceneManager.LoadScene("Colisiones");
     }
 
     public void BotMontana()
     {
-        SceneManager.LoadScene("Montana");
+        SceneManager.LoadScene("RollerCoaster");
     }
 
     public void BotPlaneta()

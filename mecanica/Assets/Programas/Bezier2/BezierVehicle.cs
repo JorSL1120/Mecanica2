@@ -11,16 +11,22 @@ public class BezierVehicle : MonoBehaviour
     public static Vector3 normalizedVelocity;
 
     // Update is called once per frame
+
+    private void Start()
+    {
+        StartCoroutine(ActivarMov());
+    }
+
     void Update()
     {
-        if(isMoving && time < bezierChain.numLinks)
+        if (isMoving && time < bezierChain.numLinks)
         {
             transform.position = PiecewiseBezier(time);
             Vector3 tangent = Tangent(time);
             Vector3 normal = Normal(time);
             Vector3 binormal = Vector3.Cross(tangent, normal);
             Quaternion rotation = Quaternion.LookRotation(tangent, binormal);
-            transform.rotation = Quaternion.Slerp(transform.rotation, rotation, slerp*Time.deltaTime);
+            transform.rotation = Quaternion.Slerp(transform.rotation, rotation, slerp * Time.deltaTime);
             normalizedVelocity = tangent;
         }
 
@@ -31,10 +37,10 @@ public class BezierVehicle : MonoBehaviour
 
         if (isMoving)
         {
-            time += Time.deltaTime/travelTime;
+            time += Time.deltaTime / travelTime;
             time = Mathf.Clamp(time, 0, bezierChain.numLinks);
         }
-       
+
     }
 
     Vector3 PiecewiseBezier(float t)
@@ -72,4 +78,9 @@ public class BezierVehicle : MonoBehaviour
         return Vector3.Cross(crossDerivatives, derivative) / (normCrossDerivatives * normDerivative);
     }
 
+    IEnumerator ActivarMov()
+    {
+        yield return new WaitForSeconds(3);
+        isMoving = true;
+    }
 }

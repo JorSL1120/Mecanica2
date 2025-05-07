@@ -13,6 +13,7 @@ TagManager:
   - Barrier
   - Bala2
   - Bala1
+  - Collectable
   layers:
   - Default
   - TransparentFX
