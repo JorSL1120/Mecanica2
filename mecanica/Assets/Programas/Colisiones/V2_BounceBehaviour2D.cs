@@ -3,7 +3,7 @@ using UnityEngine;
 public class V2_BounceBehaviour2D : MonoBehaviour
 {
     public float speed;
-    public string PlayerNumber, Bala;
+    public string PlayerNumber, Bala, MiMismo;
 
     private Rigidbody2D rb;
     private Vector2 direction, bounceVelocity;
@@ -58,6 +58,12 @@ public class V2_BounceBehaviour2D : MonoBehaviour
         }
 
         if (collision.collider.CompareTag(Bala))
+        {
+            Destroy(collision.gameObject);
+            Destroy(rb.gameObject);
+        }
+
+        if (collision.collider.CompareTag(MiMismo))
         {
             Destroy(collision.gameObject);
             Destroy(rb.gameObject);

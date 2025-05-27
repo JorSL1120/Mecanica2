@@ -6,17 +6,8 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Programas/Menu.unity
-    guid: 5d01320d8bee2994583ed60394a6d695
-  - enabled: 1
     path: Assets/Programas/Colisiones/Colisiones.unity
     guid: f2beb1342a93a864686ada585767c48e
-  - enabled: 1
-    path: Assets/Programas/Bezier2/RollerCoaster.unity
-    guid: 0a3dedb3c38cf9d4aa9a2d943544b834
-  - enabled: 1
-    path: Assets/Programas/Planeta/Planeta.unity
-    guid: 7cf558e3555349f4dbe708e480d4a7f4
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0

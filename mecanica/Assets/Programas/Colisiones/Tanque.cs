@@ -17,6 +17,8 @@ public class Tanque : MonoBehaviour
     public KeyCode teclaDisparo;
     public float fuerzaDisparo = 10f;
 
+    public float tiempoEntreDisparos;
+    private float proximoDisparo = 0f;
 
     public int Vida = 3;
     public GameObject Vida1;
@@ -48,9 +50,10 @@ public class Tanque : MonoBehaviour
             rb.MoveRotation(angle - 90f);
         }
 
-        if (Input.GetKeyDown(teclaDisparo))
+        if (Input.GetKeyDown(teclaDisparo) && Time.time >= proximoDisparo)
         {
             Disparar();
+            proximoDisparo = Time.time + tiempoEntreDisparos;
         }
 
         VidaPlayer();

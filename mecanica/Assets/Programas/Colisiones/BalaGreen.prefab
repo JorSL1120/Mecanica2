@@ -169,6 +169,7 @@ MonoBehaviour:
   speed: 10
   PlayerNumber: Player2
   Bala: Bala2
+  MiMismo: Bala1
 --- !u!96 &-4756188368146869731
 TrailRenderer:
   serializedVersion: 3
